@@ -19,3 +19,19 @@ app.use('/qrs', express.static(path.join(__dirname, 'qrs')));
 function generarCodigoQR(matricula) {
   return `QR-${matricula}-${Date.now()}`;
 }
+
+app.post('/api/alumnos', async (req, res) => {
+  // lógica para registrar alumno y generar QR
+});
+
+app.post('/api/escanear', async (req, res) => {
+  // lógica de validación y acceso
+});
+
+app.put('/api/alumnos/:id', (req, res) => {
+  // lógica de actualización
+});
+
+app.delete('/api/alumnos/:id', (req, res) => {
+  // lógica de eliminación
+});
