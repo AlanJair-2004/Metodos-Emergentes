@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Administrador - Sistema de Acceso Vehicular</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header>
+    <h1>Panel Administrador</h1>
+    <p>Gestión de alumnos, QR e historial</p>
+    <nav class="top-nav">
+      <a href="index.html">Administrador</a>
+    </nav>
+  </header>
+
+  <main class="grid">
+    <section class="card">
+      <h2>Registrar / editar alumno</h2>
+      <form id="formAlumno">
+        <input type="hidden" id="alumnoId" />
+        <input type="text" id="matricula" placeholder="Matrícula" required />
+        <input type="text" id="nombre" placeholder="Nombre completo" required />
+        <input type="text" id="auto_placa" placeholder="Placas del vehículo" />
+        <label class="checkline">
+          <input type="checkbox" id="activo" checked />
+          Alumno activo
+        </label>
+        <button type="submit">Guardar alumno</button>
+        <button type="button" id="cancelarEdicionBtn" class="btn-secundario">Cancelar edición</button>
+      </form>
+
+      <div id="contenedorQR"></div>
+    </section>
+    
+    <section class="card">
+  <h2>Configuración de QR temporal</h2>
+
+  <form id="formConfigQR">
+    <input 
+      type="number" 
+      id="tiempoQR" 
+      placeholder="Tiempo en segundos" 
+      min="10" 
+      max="3600" 
+      required 
+    />
+    <button type="submit">Guardar tiempo</button>
+  </form>
+
+  <div id="mensajeConfigQR" class="resultado neutro">
+    Configura el tiempo de vida del QR temporal.
+  </div>
+</section>
+
+    <section class="card full">
+      <h2>Alumnos registrados</h2>
+      <button id="refreshAlumnosBtn">Actualizar alumnos</button>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Matrícula</th>
+              <th>Nombre</th>
+              <th>Placas</th>
+              <th>Activo</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tablaAlumnos"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card full">
+      <h2>Historial de accesos</h2>
+      <button id="refreshBtn">Actualizar historial</button>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Matrícula</th>
+              <th>Nombre</th>
+              <th>Placas</th>
+              <th>Tipo</th>
+              <th>Estatus</th>
+              <th>Mensaje</th>
+              <th>Fecha/Hora</th>
+            </tr>
+          </thead>
+          <tbody id="tablaAccesos"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+  <div id="modalEditar" class="modal">
+  <div class="modal-contenido">
+    <h2>Editar alumno</h2>
+
+    <form id="formEditarAlumno">
+      <input type="hidden" id="editAlumnoId" />
+
+      <label>Matrícula</label>
+      <input type="text" id="editMatricula" maxlength="8" placeholder="8 números" required />
+
+      <label>Nombre completo</label>
+      <input type="text" id="editNombre" placeholder="Solo letras" required />
+
+      <label>Placas</label>
+      <input type="text" id="editPlacas" maxlength="8" placeholder="ABC-1234" />
+
+      <label class="checkline">
+        <input type="checkbox" id="editActivo" />
+        Alumno activo
+      </label>
+
+      <div class="modal-botones">
+        <button type="submit">Guardar cambios</button>
+        <button type="button" id="cerrarModalBtn" class="btn-secundario">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
+</body>
+</html>
