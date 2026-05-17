@@ -1,0 +1,15 @@
+<section class="card">
+  <h2>Registrar alumno</h2>
+  <form id="formAlumno">
+    <input type="text" id="matricula" placeholder="Matrícula" required />
+    <input type="text" id="nombre" placeholder="Nombre completo" required />
+    <input type="text" id="auto_placa" placeholder="Placas del vehículo" />
+    <label class="checkline">
+      <input type="checkbox" id="activo" checked />
+      Alumno activo
+    </label>
+    <button type="submit">Generar QR y guardar</button>
+  </form>
+
+  <div id="contenedorQR"></div>
+</section>
